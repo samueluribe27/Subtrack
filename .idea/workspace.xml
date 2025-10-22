@@ -111,11 +111,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="Diseño home/resumen de tus suscripciones">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="fix: Arreglo del menú fijo no scrolleable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
@@ -322,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760649979464</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: Arreglo del menú fijo no scrolleable">
+      <option name="closed" value="true" />
+      <created>1761170924188</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1761170924188</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,19 +357,20 @@
     <MESSAGE value="version inicial 2" />
     <MESSAGE value="Diseño inicio de sesión" />
     <MESSAGE value="Diseño home/resumen de tus suscripciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diseño home/resumen de tus suscripciones" />
+    <MESSAGE value="fix: Arreglo del menú fijo no scrolleable" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Arreglo del menú fijo no scrolleable" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.subtrack">
           <value>
-            <CheckInfo lastCheckTimestamp="1760639856643" />
+            <CheckInfo lastCheckTimestamp="1761170861095" />
           </value>
         </entry>
         <entry key="com.example.subtrack.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1760639856641" />
+            <CheckInfo lastCheckTimestamp="1761170861111" />
           </value>
         </entry>
       </map>
