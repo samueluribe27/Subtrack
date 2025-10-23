@@ -420,7 +420,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-
+                <!-- Valor principal -->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -115,6 +115,7 @@
                         android:layout_height="wrap_content"
                         android:text="17 oct"
                         android:textColor="@color/text_gray" />
+
                 </LinearLayout>
 
                 <TextView
@@ -123,6 +124,13 @@
                     android:text="$10.99"
                     android:textColor="@color/purple_main"
                     android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/btnEliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="Eliminar suscripción"
+                    android:src="@drawable/ic_delete" />
             </LinearLayout>
 
             <!-- Tarjeta Netflix -->
@@ -178,10 +186,14 @@
                     android:text="$8.00"
                     android:textColor="@color/purple_main"
                     android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="Eliminar suscripción"
+                    android:src="@drawable/ic_delete" />
             </LinearLayout>
 
             <!-- Tarjeta Apple -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="89dp"
@@ -234,8 +246,82 @@
                     android:text="$12.03"
                     android:textColor="@color/purple_main"
                     android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="Eliminar suscripción"
+                    android:src="@drawable/ic_delete" />
             </LinearLayout>
 
+            <!-- Tarjeta de Totales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@android:color/white"
+                android:padding="20dp"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:clipToOutline="true">
+
+                <!-- Total mensual -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total mensual"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$36.96"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/purple_main"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Separador vertical -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#E0E0E0"
+                    android:layout_marginHorizontal="12dp" />
+
+                <!-- Total anual -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total anual estimado"
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$443.52"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/purple_main"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
