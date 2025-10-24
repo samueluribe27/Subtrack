@@ -5,16 +5,52 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.subtrack.R
+import androidx.lifecycle.ViewModelProvider
+import com.example.subtrack.databinding.FragmentDashboardBinding
+import java.text.NumberFormat
+import java.util.*
 
 class DashboardFragment : Fragment() {
+
+    private var _binding: FragmentDashboardBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var dashboardViewModel: DashboardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Aquí inflas tu layout XML
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+    ): View {
+        dashboardViewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+
+        observeData()
+
+        return binding.root
+    }
+
+    private fun observeData() {
+        dashboardViewModel.totalSpending.observe(viewLifecycleOwner) { total ->
+            binding.textViewTotalSpending.text = formatCurrency(total)
+        }
+
+        dashboardViewModel.activeSubscriptions.observe(viewLifecycleOwner) { count ->
+            binding.textViewActiveSubscriptions.text = count.toString()
+        }
+
+        dashboardViewModel.nextPayment.observe(viewLifecycleOwner) { nextPayment ->
+            binding.textViewNextPayment.text = nextPayment
+        }
+    }
+
+    private fun formatCurrency(amount: Double): String {
+        val format = NumberFormat.getCurrencyInstance(Locale("es", "MX"))
+        return format.format(amount)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
