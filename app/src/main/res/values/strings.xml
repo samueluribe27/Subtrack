@@ -1,6 +1,32 @@
 <resources>
-    <string name="app_name">subtrack</string>
-    <string name="title_home">Home</string>
+    <string name="app_name">SubTrack</string>
+    <string name="title_home">Inicio</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_subscriptions">Suscripciones</string>
+    <string name="title_create">Crear</string>
+    <string name="title_analysis">Análisis</string>
+    <string name="title_notifications">Notificaciones</string>
+    
+    <!-- Dashboard -->
+    <string name="monthly_total">Gasto mensual total</string>
+    <string name="active_subscriptions">Suscripciones activas</string>
+    <string name="next_payment">Próximo cobro</string>
+    <string name="average_spending">Gasto promedio</string>
+    <string name="categories">Categorías</string>
+    
+    <!-- Subscriptions -->
+    <string name="add_subscription">Agregar Suscripción</string>
+    <string name="subscription_name">Nombre del servicio</string>
+    <string name="subscription_price">Precio mensual</string>
+    <string name="subscription_category">Categoría</string>
+    <string name="subscription_date">Fecha de cobro</string>
+    <string name="save_subscription">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Entretenimiento</string>
+    <string name="category_productivity">Productividad</string>
+    <string name="category_cloud">Almacenamiento</string>
+    <string name="category_news">Noticias</string>
+    <string name="category_other">Otros</string>
 </resources>
