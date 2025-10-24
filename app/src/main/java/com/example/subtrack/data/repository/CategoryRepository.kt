@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
 @Singleton
 class CategoryRepository @Inject constructor(
     private val categoryDao: CategoryDao
@@ -28,7 +29,6 @@ class CategoryRepository @Inject constructor(
             Category("Productividad", "#4ECDC4", "💼"),
             Category("Almacenamiento", "#45B7D1", "☁️"),
             Category("Noticias", "#96CEB4", "📰"),
-            Category("Otros", "#FFEAA7", "📦")
-        categoryDao.insertCategories(defaultCategories)
+            Category("Otros", "#FFEAA7", "📦"))
     }
 }

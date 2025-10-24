@@ -1,67 +1,78 @@
 package com.example.subtrack.ui.analysis
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.subtrack.databinding.FragmentAnalysisBinding
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
+import com.example.subtrack.R
 
 class AnalysisFragment : Fragment() {
 
-    private var _binding: FragmentAnalysisBinding? = null
-    private val binding get() = _binding!!
-
-    private lateinit var analysisViewModel: AnalysisViewModel
+    private lateinit var pieChart: PieChart
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        analysisViewModel = ViewModelProvider(this)[AnalysisViewModel::class.java]
-        _binding = FragmentAnalysisBinding.inflate(inflater, container, false)
+    ): View? {
+        val view = inflater.inflate(R.layout.activity_analysis, container, false)
 
-        setupCharts()
-        observeData()
+        pieChart = view.findViewById(R.id.pieChart)
+        setupPieChart()
 
-        return binding.root
+        // Ejemplo de datos dinámicos (esto luego puedes reemplazarlo por tus datos reales)
+        val categorias = mapOf(
+            "Entretenimiento" to 22.98f,
+            "Almacenamiento" to 10.98f,
+            "Educación" to 5.99f,
+            "Productividad" to 12.50f
+        )
+
+        loadPieChartData(categorias)
+
+        return view
     }
 
-    private fun setupCharts() {
-        // Setup pie chart for categories
-        binding.pieChartCategories.apply {
-            setUsePercentValues(true)
-            description.isEnabled = false
-            setExtraOffsets(5f, 10f, 5f, 5f)
-            dragDecelerationFrictionCoef = 0.95f
-            isRotationEnabled = true
-            isHighlightPerTapEnabled = true
-        }
+    private fun setupPieChart() {
+        pieChart.setUsePercentValues(true)
+        pieChart.description.isEnabled = false
+        pieChart.isRotationEnabled = true
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        pieChart.setHoleRadius(50f)
+        pieChart.transparentCircleRadius = 55f
+        pieChart.centerText = "Gastos"
+        pieChart.setCenterTextSize(14f)
+        pieChart.animateY(1400)
 
-        // Setup bar chart for monthly spending
-        binding.barChartMonthly.apply {
-            description.isEnabled = false
-            setExtraOffsets(10f, 10f, 10f, 10f)
-            isDragEnabled = true
-            setScaleEnabled(true)
-            setPinchZoom(true)
-        }
+        val legend = pieChart.legend
+        legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+        legend.orientation = Legend.LegendOrientation.HORIZONTAL
+        legend.isWordWrapEnabled = true
+        legend.textSize = 12f
     }
 
-    private fun observeData() {
-        analysisViewModel.categoryData.observe(viewLifecycleOwner) { data ->
-            // Update pie chart with category data
+    private fun loadPieChartData(categorias: Map<String, Float>) {
+        val entries = mutableListOf<PieEntry>()
+        categorias.forEach { (categoria, valor) ->
+            entries.add(PieEntry(valor, categoria))
         }
 
-        analysisViewModel.monthlyData.observe(viewLifecycleOwner) { data ->
-            // Update bar chart with monthly data
-        }
-    }
+        val dataSet = PieDataSet(entries, "")
+        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
+        dataSet.valueTextSize = 14f
+        dataSet.sliceSpace = 2f
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        val data = PieData(dataSet)
+        data.setValueTextColor(Color.WHITE)
+        pieChart.data = data
+        pieChart.invalidate() // refresca
     }
 }
