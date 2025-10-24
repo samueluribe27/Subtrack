@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.subtrack.SubTrackApplication
 import com.example.subtrack.databinding.FragmentAnalysisBinding
+import com.example.subtrack.ui.ViewModelFactory
 
 class AnalysisFragment : Fragment() {
 
@@ -20,7 +22,9 @@ class AnalysisFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        analysisViewModel = ViewModelProvider(this)[AnalysisViewModel::class.java]
+        val app = requireActivity().application as SubTrackApplication
+        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+        analysisViewModel = ViewModelProvider(this, factory)[AnalysisViewModel::class.java]
         _binding = FragmentAnalysisBinding.inflate(inflater, container, false)
 
         setupCharts()

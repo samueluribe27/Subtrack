@@ -7,9 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.subtrack.data.model.Subscription
 import com.example.subtrack.data.repository.SubscriptionRepository
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class SubscriptionsViewModel @Inject constructor(
+class SubscriptionsViewModel(
     private val subscriptionRepository: SubscriptionRepository
 ) : ViewModel() {
 

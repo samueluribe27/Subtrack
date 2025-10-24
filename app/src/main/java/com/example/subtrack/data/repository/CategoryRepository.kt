@@ -3,11 +3,7 @@ package com.example.subtrack.data.repository
 import com.example.subtrack.data.dao.CategoryDao
 import com.example.subtrack.data.model.Category
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
-
-@Singleton
-class CategoryRepository @Inject constructor(
+class CategoryRepository(
     private val categoryDao: CategoryDao
 ) {
     fun getAllCategories(): Flow<List<Category>> {

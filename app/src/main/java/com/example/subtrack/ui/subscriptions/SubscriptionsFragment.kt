@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.subtrack.SubTrackApplication
 import com.example.subtrack.databinding.FragmentSubscriptionsBinding
+import com.example.subtrack.ui.ViewModelFactory
 
 class SubscriptionsFragment : Fragment() {
 
@@ -22,7 +24,9 @@ class SubscriptionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        subscriptionsViewModel = ViewModelProvider(this)[SubscriptionsViewModel::class.java]
+        val app = requireActivity().application as SubTrackApplication
+        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+        subscriptionsViewModel = ViewModelProvider(this, factory)[SubscriptionsViewModel::class.java]
         _binding = FragmentSubscriptionsBinding.inflate(inflater, container, false)
 
         setupRecyclerView()

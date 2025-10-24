@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.subtrack.SubTrackApplication
 import com.example.subtrack.databinding.FragmentDashboardBinding
+import com.example.subtrack.ui.ViewModelFactory
 import java.text.NumberFormat
 import java.util.*
 
@@ -22,7 +24,9 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dashboardViewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
+        val app = requireActivity().application as SubTrackApplication
+        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+        dashboardViewModel = ViewModelProvider(this, factory)[DashboardViewModel::class.java]
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
         observeData()

@@ -3,11 +3,7 @@ package com.example.subtrack.data.repository
 import com.example.subtrack.data.dao.SubscriptionDao
 import com.example.subtrack.data.model.Subscription
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
-
-@Singleton
-class SubscriptionRepository @Inject constructor(
+class SubscriptionRepository(
     private val subscriptionDao: SubscriptionDao
 ) {
     fun getAllActiveSubscriptions(): Flow<List<Subscription>> {

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.subtrack.SubTrackApplication
 import com.example.subtrack.databinding.FragmentCreateSubscriptionBinding
+import com.example.subtrack.ui.ViewModelFactory
 
 class CreateSubscriptionFragment : Fragment() {
 
@@ -21,7 +23,9 @@ class CreateSubscriptionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        createSubscriptionViewModel = ViewModelProvider(this)[CreateSubscriptionViewModel::class.java]
+        val app = requireActivity().application as SubTrackApplication
+        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+        createSubscriptionViewModel = ViewModelProvider(this, factory)[CreateSubscriptionViewModel::class.java]
         _binding = FragmentCreateSubscriptionBinding.inflate(inflater, container, false)
 
         setupUI()
