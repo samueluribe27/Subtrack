@@ -10,7 +10,22 @@
           <theme>@style/Theme.Subtrack</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_cancel.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_gradient.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_card.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_card_subs.xml">
         <config>
           <theme>@style/Theme.Subtrack</theme>
         </config>
@@ -21,6 +36,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_input.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_input_subs.xml">
         <config>
           <theme>@style/Theme.Subtrack</theme>
         </config>
@@ -80,6 +100,11 @@
           <theme>@style/Theme.Subtrack</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_subs.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view.xml">
         <config>
           <theme>@style/Theme.Subtrack</theme>
@@ -116,11 +141,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="inicio layout &quot;ver&quot;">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete.xml" afterDir="false" />
+    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="estilado layout &quot;ver&quot;">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_cancel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_gradient.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_card_subs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_input_subs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_subs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,8 +191,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -187,7 +215,7 @@
     <setting file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -349,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761177620967</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="estilado layout &quot;ver&quot;">
+      <option name="closed" value="true" />
+      <created>1761180633935</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761180633935</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -383,19 +419,20 @@
     <MESSAGE value="fix: Arreglo del menú fijo no scrolleable" />
     <MESSAGE value="finalización layout de home" />
     <MESSAGE value="inicio layout &quot;ver&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="inicio layout &quot;ver&quot;" />
+    <MESSAGE value="estilado layout &quot;ver&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilado layout &quot;ver&quot;" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.subtrack">
           <value>
-            <CheckInfo lastCheckTimestamp="1761170861095" />
+            <CheckInfo lastCheckTimestamp="1761262418003" />
           </value>
         </entry>
         <entry key="com.example.subtrack.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1761170861111" />
+            <CheckInfo lastCheckTimestamp="1761262418001" />
           </value>
         </entry>
       </map>
