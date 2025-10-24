@@ -25,21 +25,28 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
         try {
             val app = requireActivity().application as SubTrackApplication
             val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
             homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+            
+            val textView: TextView = binding.textHome
+            homeViewModel.text.observe(viewLifecycleOwner) {
+                textView.text = it
+            }
         } catch (e: Exception) {
             e.printStackTrace()
+            // Fallback: usar ViewModel básico sin dependencias
+            homeViewModel = HomeViewModel()
+            val textView: TextView = binding.textHome
+            homeViewModel.text.observe(viewLifecycleOwner) {
+                textView.text = it
+            }
         }
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        
         return root
     }
 
