@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("javax.inject:javax.inject:1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

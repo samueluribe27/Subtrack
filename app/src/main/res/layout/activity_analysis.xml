@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_subs"
         android:padding="16dp">
 
         <LinearLayout
@@ -96,12 +97,13 @@
                     android:paddingBottom="10dp"/>
 
                 <!-- Aquí puedes poner una imagen temporal o un gráfico real -->
-                <ImageView
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:src="@drawable/sample_pie_chart"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="Gráfico circular"/>
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
             </LinearLayout>
 
             <!-- Lista de categorías -->
@@ -118,7 +120,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="space_between"
                     android:paddingVertical="6dp">
 
                     <TextView
@@ -139,7 +140,7 @@
                             android:layout_height="wrap_content"
                             android:text="$22.98/mes"
                             android:textStyle="bold"
-                            android:textColor="@color/text_dark"/>
+                            android:textColor="@color/black"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -153,13 +154,12 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/divider_gray"/>
+                    android:background="@color/black"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="space_between"
                     android:paddingVertical="6dp">
 
                     <TextView
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:text="$10.98/mes"
                             android:textStyle="bold"
-                            android:textColor="@color/text_dark"/>
+                            android:textColor="@color/black"/>
 
                         <TextView
                             android:layout_width="wrap_content"

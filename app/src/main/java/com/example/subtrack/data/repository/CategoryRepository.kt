@@ -3,6 +3,7 @@ package com.example.subtrack.data.repository
 import com.example.subtrack.data.dao.CategoryDao
 import com.example.subtrack.data.model.Category
 import kotlinx.coroutines.flow.Flow
+
 class CategoryRepository(
     private val categoryDao: CategoryDao
 ) {
@@ -18,13 +19,7 @@ class CategoryRepository(
         categoryDao.insertCategory(category)
     }
 
-    suspend fun insertDefaultCategories() {
-        val defaultCategories = listOf(
-            Category("Entretenimiento", "#FF6B6B", "🎬"),
-            Category("Productividad", "#4ECDC4", "💼"),
-            Category("Almacenamiento", "#45B7D1", "☁️"),
-            Category("Noticias", "#96CEB4", "📰"),
-            Category("Otros", "#FFEAA7", "📦")
-        categoryDao.insertCategories(defaultCategories)
+    suspend fun insertCategories(categories: List<Category>) {
+        categoryDao.insertCategories(categories)
     }
 }

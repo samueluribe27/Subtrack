@@ -9,16 +9,20 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        // 🔥 Agregamos JitPack
+        maven { url = uri("https://jitpack.io") }
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        // 🔥 Agregamos JitPack aquí también
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
 rootProject.name = "subtrack"
 include(":app")
- 
