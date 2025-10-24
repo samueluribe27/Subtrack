@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.subtrack.SubTrackApplication
+import com.example.subtrack.ViewModelFactory
 import com.example.subtrack.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var homeViewModel: HomeViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,8 +25,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        try {
+            val app = requireActivity().application as SubTrackApplication
+            val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
