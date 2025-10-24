@@ -24,10 +24,16 @@ class SubscriptionsViewModel(
 
     private fun loadSubscriptions() {
         viewModelScope.launch {
-            _isLoading.value = true
-            subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
-                _subscriptions.value = subscriptions
+            try {
+                _isLoading.value = true
+                subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
+                    _subscriptions.value = subscriptions
+                    _isLoading.value = false
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
                 _isLoading.value = false
+                _subscriptions.value = emptyList()
             }
         }
     }

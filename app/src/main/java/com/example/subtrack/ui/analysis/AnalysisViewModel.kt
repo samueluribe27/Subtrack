@@ -26,18 +26,26 @@ class AnalysisViewModel(
 
     private fun loadAnalysisData() {
         viewModelScope.launch {
-            // Load subscriptions and calculate category spending
-            subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
-                val categorySpending = subscriptions.groupBy { it.category }
-                    .mapValues { (_, subs) -> subs.sumOf { it.price } }
-                _categoryData.value = categorySpending
+            try {
+                // Load subscriptions and calculate category spending
+                subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
+                    val categorySpending = subscriptions.groupBy { it.category }
+                        .mapValues { (_, subs) -> subs.sumOf { it.price } }
+                    _categoryData.value = categorySpending
 
-                val total = subscriptions.sumOf { it.price }
-                _totalSpending.value = total
+                    val total = subscriptions.sumOf { it.price }
+                    _totalSpending.value = total
 
-                // For monthly data, you could implement historical data
-                // For now, we'll use current month data
-                _monthlyData.value = mapOf("Actual" to total)
+                    // For monthly data, you could implement historical data
+                    // For now, we'll use current month data
+                    _monthlyData.value = mapOf("Actual" to total)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Set default values
+                _categoryData.value = emptyMap()
+                _totalSpending.value = 0.0
+                _monthlyData.value = mapOf("Actual" to 0.0)
             }
         }
     }

@@ -30,28 +30,37 @@ class DashboardViewModel(
 
     private fun loadDashboardData() {
         viewModelScope.launch {
-            subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
-                _subscriptions.value = subscriptions
-                
-                val total = subscriptions.sumOf { it.price }
-                _totalSpending.value = total
-                
-                _activeSubscriptions.value = subscriptions.size
-                
-                // Calculate next payment
-                val today = java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH)
-                val nextBillingDay = subscriptions
-                    .map { it.billingDate }
-                    .filter { it >= today }
-                    .minOrNull() ?: subscriptions.minOfOrNull { it.billingDate } ?: 1
-                
-                val daysUntilNext = if (nextBillingDay >= today) {
-                    nextBillingDay - today
-                } else {
-                    (30 - today) + nextBillingDay
+            try {
+                subscriptionRepository.getAllActiveSubscriptions().collect { subscriptions ->
+                    _subscriptions.value = subscriptions
+                    
+                    val total = subscriptions.sumOf { it.price }
+                    _totalSpending.value = total
+                    
+                    _activeSubscriptions.value = subscriptions.size
+                    
+                    // Calculate next payment
+                    val today = java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH)
+                    val nextBillingDay = subscriptions
+                        .map { it.billingDate }
+                        .filter { it >= today }
+                        .minOrNull() ?: subscriptions.minOfOrNull { it.billingDate } ?: 1
+                    
+                    val daysUntilNext = if (nextBillingDay >= today) {
+                        nextBillingDay - today
+                    } else {
+                        (30 - today) + nextBillingDay
+                    }
+                    
+                    _nextPayment.value = "${daysUntilNext}d"
                 }
-                
-                _nextPayment.value = "${daysUntilNext}d"
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Set default values to prevent crashes
+                _totalSpending.value = 0.0
+                _activeSubscriptions.value = 0
+                _nextPayment.value = "0d"
+                _subscriptions.value = emptyList()
             }
         }
     }
