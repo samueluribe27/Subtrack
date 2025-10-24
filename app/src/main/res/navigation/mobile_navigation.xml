@@ -18,24 +18,6 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_view"
-        android:name="com.example.subtrack.ui.subscriptions.SubscriptionsFragment"
-        android:label="@string/title_subscriptions"
-        tools:layout="@layout/fragment_subscriptions" />
-
-    <fragment
-        android:id="@+id/navigation_create"
-        android:name="com.example.subtrack.ui.create.CreateSubscriptionFragment"
-        android:label="@string/title_create"
-        tools:layout="@layout/fragment_create_subscription" />
-
-    <fragment
-        android:id="@+id/navigation_analysis"
-        android:name="com.example.subtrack.ui.analysis.AnalysisFragment"
-        android:label="@string/title_analysis"
-        tools:layout="@layout/fragment_analysis" />
-
-    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.subtrack.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"

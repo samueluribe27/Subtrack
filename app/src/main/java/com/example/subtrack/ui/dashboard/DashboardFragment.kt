@@ -24,12 +24,18 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val app = requireActivity().application as SubTrackApplication
-        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
-        dashboardViewModel = ViewModelProvider(this, factory)[DashboardViewModel::class.java]
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-
-        observeData()
+        
+        try {
+            val app = requireActivity().application as SubTrackApplication
+            val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+            dashboardViewModel = ViewModelProvider(this, factory)[DashboardViewModel::class.java]
+            
+            observeData()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Handle error gracefully
+        }
 
         return binding.root
     }

@@ -24,13 +24,19 @@ class SubscriptionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val app = requireActivity().application as SubTrackApplication
-        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
-        subscriptionsViewModel = ViewModelProvider(this, factory)[SubscriptionsViewModel::class.java]
         _binding = FragmentSubscriptionsBinding.inflate(inflater, container, false)
-
-        setupRecyclerView()
-        observeData()
+        
+        try {
+            val app = requireActivity().application as SubTrackApplication
+            val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+            subscriptionsViewModel = ViewModelProvider(this, factory)[SubscriptionsViewModel::class.java]
+            
+            setupRecyclerView()
+            observeData()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Handle error gracefully
+        }
 
         return binding.root
     }

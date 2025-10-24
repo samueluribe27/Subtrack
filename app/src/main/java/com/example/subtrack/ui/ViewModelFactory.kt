@@ -16,20 +16,25 @@ class ViewModelFactory(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return when {
-            modelClass.isAssignableFrom(DashboardViewModel::class.java) -> {
-                DashboardViewModel(subscriptionRepository) as T
+        return try {
+            when {
+                modelClass.isAssignableFrom(DashboardViewModel::class.java) -> {
+                    DashboardViewModel(subscriptionRepository) as T
+                }
+                modelClass.isAssignableFrom(SubscriptionsViewModel::class.java) -> {
+                    SubscriptionsViewModel(subscriptionRepository) as T
+                }
+                modelClass.isAssignableFrom(CreateSubscriptionViewModel::class.java) -> {
+                    CreateSubscriptionViewModel(subscriptionRepository) as T
+                }
+                modelClass.isAssignableFrom(AnalysisViewModel::class.java) -> {
+                    AnalysisViewModel(subscriptionRepository) as T
+                }
+                else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
-            modelClass.isAssignableFrom(SubscriptionsViewModel::class.java) -> {
-                SubscriptionsViewModel(subscriptionRepository) as T
-            }
-            modelClass.isAssignableFrom(CreateSubscriptionViewModel::class.java) -> {
-                CreateSubscriptionViewModel(subscriptionRepository) as T
-            }
-            modelClass.isAssignableFrom(AnalysisViewModel::class.java) -> {
-                AnalysisViewModel(subscriptionRepository) as T
-            }
-            else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
         }
     }
 }

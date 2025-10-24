@@ -22,13 +22,19 @@ class AnalysisFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val app = requireActivity().application as SubTrackApplication
-        val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
-        analysisViewModel = ViewModelProvider(this, factory)[AnalysisViewModel::class.java]
         _binding = FragmentAnalysisBinding.inflate(inflater, container, false)
-
-        setupCharts()
-        observeData()
+        
+        try {
+            val app = requireActivity().application as SubTrackApplication
+            val factory = ViewModelFactory(app.subscriptionRepository, app.categoryRepository)
+            analysisViewModel = ViewModelProvider(this, factory)[AnalysisViewModel::class.java]
+            
+            setupCharts()
+            observeData()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Handle error gracefully
+        }
 
         return binding.root
     }
