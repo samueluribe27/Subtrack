@@ -90,6 +90,11 @@
           <theme>@style/Theme.Subtrack</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_analysis.xml">
+        <config>
+          <theme>@style/Theme.Subtrack</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
         <config>
           <theme>@style/Theme.Subtrack</theme>
@@ -141,14 +146,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="estilado layout &quot;ver&quot;">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_cancel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_button_gradient.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_card_subs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_input_subs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_subs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
+    <list default="true" id="d2770e70-8489-46d4-aff6-ff174cbb0540" name="Changes" comment="estilado añadir suscripciones">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/subtrack/ui/analysis/AnalysisFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_analysis.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,9 +192,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -385,7 +387,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761180633935</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="estilado añadir suscripciones">
+      <option name="closed" value="true" />
+      <created>1761268646703</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1761268646703</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,7 +430,8 @@
     <MESSAGE value="finalización layout de home" />
     <MESSAGE value="inicio layout &quot;ver&quot;" />
     <MESSAGE value="estilado layout &quot;ver&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="estilado layout &quot;ver&quot;" />
+    <MESSAGE value="estilado añadir suscripciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilado añadir suscripciones" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
