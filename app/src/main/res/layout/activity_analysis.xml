@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
-    tools:context=".ui.analysis.AnalysisFragment">
+    tools:context=".ui.analysis.AnalysisActivity">
 
     <!-- Contenido scrollable -->
     <ScrollView
@@ -17,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_subs"
         android:padding="16dp">
 
         <LinearLayout

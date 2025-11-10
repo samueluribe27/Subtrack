@@ -1,40 +1,32 @@
 package com.example.subtrack
 
-import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.subtrack.databinding.ActivityMainBinding
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.example.subtrack.ui.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Aquí se indica el layout que se mostrará al abrir la app
+        setContentView(R.layout.activity_login)
+        val inputPassword = findViewById<EditText>(R.id.etPassword)
+        val btnEntrar = findViewById<Button>(R.id.btnLogin)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        btnEntrar.setOnClickListener {
+            val password = inputPassword.text.toString()
 
-        val navView: BottomNavigationView = binding.navView
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, 
-                R.id.navigation_dashboard, 
-                R.id.navigation_view,
-                R.id.navigation_create,
-                R.id.navigation_analysis,
-                R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+            if (password.length > 6) {
+                // ✅ Contraseña válida → Ir al layout Home
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            } else {
+                // ❌ Contraseña demasiado corta → Mostrar mensaje
+                Toast.makeText(this, "La contraseña debe tener más de 6 dígitos", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
-}
+    }
