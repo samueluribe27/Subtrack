@@ -22,9 +22,4 @@
         android:icon="@drawable/ic_analisis"
         android:title="Análisis" />
 
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Avisos" />
-
 </menu>

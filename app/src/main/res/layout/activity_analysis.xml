@@ -1,197 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root ConstraintLayout to hold both scrollable content and the fixed navigation bar -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light"
+    android:background="@color/white"
     tools:context=".ui.analysis.AnalysisActivity">
 
-    <!-- Contenido scrollable -->
+    <!-- Scrollable Content Area: Constrained to the top and above the nav bar -->
     <ScrollView
-        android:id="@+id/scrollViewAnalysis"
+        android:id="@+id/mainScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fillViewport="true"
-        android:padding="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:paddingBottom="16dp">
 
-            <!-- Encabezado -->
+            <!-- Header -->
             <TextView
+                android:id="@+id/tvHeaderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Análisis"
+                android:textColor="@color/black"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:textSize="22sp"
-                android:paddingBottom="4dp"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvHeaderSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="Estadísticas de tus suscripciones"
-                android:textColor="@color/text_gray"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
-                android:paddingBottom="16dp"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderTitle" />
 
-            <!-- Tarjeta Gasto anual proyectado -->
-            <LinearLayout
+            <!-- Annual Cost Card (Gradient Simulation) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAnnualCost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_gradient"
-                android:padding="20dp"
+                android:layout_marginTop="20dp"
+                android:elevation="8dp"
+                app:cardBackgroundColor="#673AB7"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSubtitle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gradient"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:text="Gasto anual proyectado"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalYearlyCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="$0.00"
+                        android:textColor="@color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- TrendingUp Icon Placeholder (using Vector Asset for simplicity) -->
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/outline_arrow_outward_24"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tvSubscriptionCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Basado en 0 suscripciones activas"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category Breakdown Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCategoryBreakdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:elevation="4dp"
-                android:layout_marginBottom="20dp"
-                android:clipToOutline="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gasto anual proyectado"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$443.52"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    android:textSize="28sp"
-                    android:paddingVertical="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="📈 Basado en 4 suscripciones activas"
-                    android:textColor="@android:color/white"
-                    android:textSize="13sp"/>
-            </LinearLayout>
-
-            <!-- Tarjeta de gráfica -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_card"
-                android:padding="20dp"
-                android:elevation="3dp"
-                android:layout_marginBottom="16dp"
-                android:clipToOutline="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Distribución por categoría"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:paddingBottom="10dp"/>
-
-                <!-- Aquí puedes poner una imagen temporal o un gráfico real -->
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp" />
-
-            </LinearLayout>
-
-            <!-- Lista de categorías -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_card"
-                android:padding="16dp"
-                android:elevation="3dp"
-                android:clipToOutline="true">
+                app:cardCornerRadius="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardAnnualCost">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="6dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🎬 Entretenimiento"
-                        android:textColor="@color/purple_main"
-                        android:textSize="14sp"/>
+                        android:text="Distribución por categoría"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
+                    <!-- Pie Chart Placeholder -->
+                    <View
+                        android:id="@+id/chartPiePlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/white"
+                        tools:background="#E0E0E0" />
+                    <!-- NOTE: Replace the View above with a chart library implementation (e.g., MPAndroidChart) -->
+
+                    <!-- Category List Container -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/categoryListContainer"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:orientation="vertical"
-                        android:gravity="end">
+                        tools:ignore="NestedWeights" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$22.98/mes"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2 suscripciones"
-                            android:textColor="@color/text_gray"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black"/>
+            <!-- Monthly Projection Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMonthlyProjection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardCategoryBreakdown">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingVertical="6dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💾 Almacenamiento"
-                        android:textColor="@color/purple_main"
-                        android:textSize="14sp"/>
+                        android:text="Proyección próximos meses"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Bar Chart Placeholder -->
+                    <View
+                        android:id="@+id/chartBarPlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/white"
+                        tools:background="#E0E0E0" />
+                    <!-- NOTE: Replace the View above with a chart library implementation (e.g., MPAndroidChart) -->
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Recommendations/Insights -->
+            <TextView
+                android:id="@+id/tvRecommendationsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Recomendaciones"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardMonthlyProjection" />
+
+            <!-- Most Expensive Insight Card (Orange) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMostExpensive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#FFF7EE"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="#FBD38D"
+                app:strokeWidth="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecommendationsTitle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- AlertCircle Icon Placeholder -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/outline_crisis_alert_24"
+                        app:tint="#F97316"
+                        android:contentDescription="Alert Icon" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="end">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$10.98/mes"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
+                            android:text="Tu suscripción más cara"
+                            android:textColor="#9A3412"
+                            android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvMostExpensiveDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1 suscripción"
-                            android:textColor="@color/text_gray"
-                            android:textSize="12sp"/>
+                            android:layout_marginTop="2dp"
+                            android:text="[Cargando...]"
+                            android:textColor="#C2410C"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+            <!-- Savings Potential Insight Card (Green) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSavingsPotential"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#F0FFF4"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="#A7F3D0"
+                app:strokeWidth="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardMostExpensive">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- TrendingDown Icon Placeholder -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_trending_down"
+                        app:tint="#10B981"
+                        android:contentDescription="Trending Down Icon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Potencial de ahorro"
+                            android:textColor="#065F46"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvSavingsPotential"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="[Cargando...]"
+                            android:textColor="#059669"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <!-- Fixed Bottom Navigation View -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        android:elevation="8dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

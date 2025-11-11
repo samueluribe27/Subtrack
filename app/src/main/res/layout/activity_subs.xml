@@ -1,201 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_light"
-    tools:context=".ui.dashboard.DashboardFragment">
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FB"
-    tools:context=".MainActivity">
+    android:background="@color/white"
+    tools:context=".ui.subscriptions.CreateSubscriptionActivity">
 
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SubTrack"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Añadir suscripción"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completa los detalles de tu nueva suscripción"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <!-- Card Container for Inputs -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- 1. Nombre del servicio -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre del servicio"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ej: Netflix, Spotify, etc."
+                    android:inputType="text"
+                    android:paddingVertical="12dp"
+                    android:textSize="16sp" />
+
+                    <!-- 2. Categoría (Spinner) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Categoría"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <!-- Spinner para la categoría - NUEVO ELEMENTO FUNCIONAL -->
+                    <Spinner
+                        android:id="@+id/spinnerCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:spinnerMode="dropdown"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                    <!-- 3. Precio mensual -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Precio mensual"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="$ 0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingVertical="12dp"
+                    android:textSize="16sp" />
+
+                    <!-- 4. Próxima fecha de cobro (DatePicker Trigger) -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Próxima fecha de cobro"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNextPaymentDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="dd/mm/aaaa"
+                    android:inputType="none"
+                    android:paddingVertical="12dp"
+                    android:textSize="16sp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tip/Consejo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="#FFFBE6"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Añade todas tus suscripciones para tener un control total de tus gastos recurrentes y evitar cobros sorpresa."
+                    android:textColor="#92400E"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CANCELAR"
+                android:textColor="@color/purple_main"
+                app:strokeColor="@color/purple_main" />
+
+                <Button
+                    android:id="@+id/btnCreate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_main"
+                android:text="CREAR"
+                android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation View -->
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Título principal -->
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir suscripción"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#1C1C1E"
-            android:layout_marginBottom="4dp" />
-
-        <!-- Subtítulo -->
-        <TextView
-            android:id="@+id/subtitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Completa los detalles de tu nueva suscripción"
-            android:textSize="14sp"
-            android:textColor="#6D6D6D"
-            android:layout_marginBottom="20dp" />
-
-        <!-- Contenedor principal del formulario -->
-        <LinearLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_subs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card_subs"
-            android:padding="20dp"
-            android:layout_marginBottom="20dp">
-
-            <!-- Campo: Nombre del servicio -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre del servicio"
-                android:textColor="#1C1C1E"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp" />
-
-            <EditText
-                android:id="@+id/serviceNameInput"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="Ej: Netflix, Spotify, etc."
-                android:background="@drawable/bg_input_subs"
-                android:paddingHorizontal="16dp"
-                android:textColorHint="#A1A1A1"
-                android:textColor="#000000"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Campo: Categoría -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Categoría"
-                android:textColor="#1C1C1E"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp" />
-
-            <Spinner
-                android:id="@+id/categorySpinner"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_input_subs"
-                android:paddingHorizontal="12dp"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Campo: Precio mensual -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio mensual"
-                android:textColor="#1C1C1E"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp" />
-
-            <EditText
-                android:id="@+id/monthlyPriceInput"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="$ 0.00"
-                android:inputType="numberDecimal"
-                android:background="@drawable/bg_input_subs"
-                android:paddingHorizontal="16dp"
-                android:textColorHint="#A1A1A1"
-                android:textColor="#000000"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Campo: Próxima fecha de cobro -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Próxima fecha de cobro"
-                android:textColor="#1C1C1E"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp" />
-
-            <EditText
-                android:id="@+id/paymentDateInput"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="dd/mm/aaaa"
-                android:background="@drawable/bg_input_subs"
-                android:paddingHorizontal="16dp"
-                android:focusable="false"
-                android:textColorHint="#A1A1A1"
-                android:textColor="#000000" />
-        </LinearLayout>
-
-        <!-- Botones -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="2"
-            android:layout_marginBottom="24dp">
-
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_button_cancel"
-                android:text="Cancelar"
-                android:textColor="@color/background_light" />
-
-            <Button
-                android:id="@+id/createButton"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:text="Crear"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/bg_button_gradient" />
-        </LinearLayout>
-
-        <!-- Tarjeta de consejo -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card_subs"
-            android:padding="16dp">
-
-            <TextView
-                android:text="💡 Consejo"
-                android:textStyle="bold"
-                android:textColor="#1C1C1E"
-                android:textSize="14sp"
-                android:layout_marginBottom="6dp" />
-
-            <TextView
-                android:text="Añade todas tus suscripciones para tener un control total de tus gastos recurrentes y evitar cobros inesperados."
-                android:textColor="#6D6D6D"
-                android:textSize="13sp" />
-        </LinearLayout>
+            android:background="?android:attr/windowBackground"
+            android:elevation="8dp"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_item_color"
+            app:menu="@menu/bottom_nav_menu" />
     </LinearLayout>
-</ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-android:id="@+id/nav_subs"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:background="?android:attr/windowBackground"
-android:elevation="8dp"
-app:labelVisibilityMode="labeled"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:menu="@menu/bottom_nav_menu" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

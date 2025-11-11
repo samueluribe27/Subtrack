@@ -1,82 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    app:cardElevation="2dp">
 
-    <LinearLayout
+    <!-- Usamos ConstraintLayout para posicionar los elementos directamente -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@android:color/white"> <!-- Fondo blanco como en tu fragmento -->
 
+        <!-- Initial Letter Icon -->
         <TextView
-            android:id="@+id/textViewCategoryIcon"
+            android:id="@+id/tvInitial"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/outline_circle_24"
             android:gravity="center"
-            android:text="🎬"
+            android:text="S"
+            android:textColor="@color/purple_main"
             android:textSize="20sp"
-            android:layout_marginEnd="12dp" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@android:color/background_light"
+            tools:textColor="@color/purple_main" />
 
+        <!-- Subscription Details (Vertical Layout) -->
         <LinearLayout
+            android:id="@+id/detailsContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/tvInitial"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvPrice">
 
             <TextView
-                android:id="@+id/textViewName"
+                android:id="@+id/tvNextPayment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Netflix"
+                android:text="Próximo cobro"
+                android:textColor="@color/purple_main"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvSubscriptionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Spotify"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/textViewCategory"
+                android:id="@+id/tvPaymentDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Entretenimiento"
-                android:textColor="@color/text_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/textViewBillingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Día 15"
+                tools:text="17 oct"
                 android:textColor="@color/text_gray"
                 android:textSize="12sp" />
+
         </LinearLayout>
 
-        <LinearLayout
+        <!-- Price -->
+        <TextView
+            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end">
+            tools:text="$10.99"
+            android:textColor="@color/purple_main"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnDeleteSubscription"
+            app:layout_constraintTop_toTopOf="@+id/btnDeleteSubscription"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDeleteSubscription"/>
 
-            <TextView
-                android:id="@+id/textViewPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$8.99"
-                android:textColor="@color/purple_main"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <!-- DELETE ICON (Papelera) - ID ESENCIAL -->
+        <ImageView
+            android:id="@+id/btnDeleteSubscription"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar suscripción"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@android:color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mensual"
-                android:textColor="@color/text_gray"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

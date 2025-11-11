@@ -33,11 +33,7 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.navigation_notifications -> {
-                    val intent = Intent(this, NotificationsActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
+
                 else -> false
                 }
             }

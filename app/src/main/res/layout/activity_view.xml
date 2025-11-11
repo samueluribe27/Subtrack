@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.view.ViewActivity"> <!-- Asegúrate de que el contexto sea ViewActivity -->
 
     <!-- Contenido principal scrollable -->
     <ScrollView
@@ -68,190 +68,23 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Tarjeta principal -->
-
-            <!-- Tarjeta Spotify -->
-            <LinearLayout
+            <!-- 
+            *** REEMPLAZO DE TARJETAS INDIVIDUALES POR EL RECYCLERVIEW ***
+            Este RecyclerView usará el item_subscription.xml y el SubscriptionAdapter.kt
+            -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/subscriptions_list"
                 android:layout_width="match_parent"
-                android:layout_height="89dp"
-                android:layout_marginBottom="20dp"
-                android:background="@android:color/white"
-                android:clipToOutline="true"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                tools:itemCount="3"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_subscription" />
 
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/background_light"
-                    android:gravity="center"
-                    android:text="S"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Próximo cobro"
-                        android:textColor="@color/purple_main" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Spotify"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17 oct"
-                        android:textColor="@color/text_gray" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$10.99"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/btnEliminar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="Eliminar suscripción"
-                    android:src="@drawable/ic_delete" />
-            </LinearLayout>
-
-            <!-- Tarjeta Netflix -->
-            <LinearLayout
+            <!-- Separador estético después de la lista -->
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="89dp"
-                android:layout_marginBottom="20dp"
-                android:background="@android:color/white"
-                android:clipToOutline="true"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/background_light"
-                    android:gravity="center"
-                    android:text="N"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Próximo cobro"
-                        android:textColor="@color/purple_main" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Netflix"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="23 oct"
-                        android:textColor="@color/text_gray" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$8.00"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="Eliminar suscripción"
-                    android:src="@drawable/ic_delete" />
-            </LinearLayout>
-
-            <!-- Tarjeta Apple -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="89dp"
-                android:layout_marginBottom="20dp"
-                android:background="@android:color/white"
-                android:clipToOutline="true"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/background_light"
-                    android:gravity="center"
-                    android:text="A"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Próximo cobro"
-                        android:textColor="@color/purple_main" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Apple"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="25 oct"
-                        android:textColor="@color/text_gray" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$12.03"
-                    android:textColor="@color/purple_main"
-                    android:textStyle="bold" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="Eliminar suscripción"
-                    android:src="@drawable/ic_delete" />
-            </LinearLayout>
+                android:layout_height="16dp" />
 
             <!-- Tarjeta de Totales -->
             <LinearLayout
@@ -267,11 +100,11 @@
 
                 <!-- Total mensual -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="16dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -280,14 +113,16 @@
                         android:textColor="@color/text_gray"
                         android:textSize="14sp" />
 
+                    <!-- ID ESENCIAL: tvTotalMensual -->
                     <TextView
+                        android:id="@+id/tvTotalMensual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:text="$36.96"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:textColor="@color/purple_main"
-                        android:layout_marginTop="4dp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Separador vertical -->
@@ -312,7 +147,9 @@
                         android:textColor="@color/text_gray"
                         android:textSize="14sp" />
 
+                    <!-- ID ESENCIAL: tvTotalAnualEstimado -->
                     <TextView
+                        android:id="@+id/tvTotalAnualEstimado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$443.52"
@@ -338,6 +175,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

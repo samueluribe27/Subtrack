@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Subtrack">
         <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.view.ViewActivity" />
+        <activity android:name=".ui.subscriptions.CreateSubscriptionActivity" />
+        <activity android:name=".ui.analysis.AnalysisActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
