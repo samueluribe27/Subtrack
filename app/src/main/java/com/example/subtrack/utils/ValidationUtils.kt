@@ -1,10 +1,5 @@
 package com.example.subtrack.utils
 
-/**
- * Utilidades para validación de datos en la aplicación.
- * 
- * @author [Tu Nombre]
- */
 object ValidationUtils {
     
     /**
