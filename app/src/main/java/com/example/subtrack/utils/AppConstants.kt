@@ -3,7 +3,7 @@ package com.example.subtrack.utils
 /**
  * Objeto que contiene constantes utilizadas en toda la aplicación.
  * 
- * @author [Tu Nombre]
+ * @author Samuel Uribe y Jose Mejía
  */
 object AppConstants {
     // Nombres de preferencias compartidas
