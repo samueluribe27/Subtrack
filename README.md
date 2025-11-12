@@ -3,7 +3,7 @@
 Aplicación móvil nativa en Kotlin para el seguimiento de suscripciones.
 
 ## Descripción
-Aplicación desarrollada por [Tu Nombre] para la gestión de suscripciones, con funcionalidades de seguimiento y análisis de gastos.
+Aplicación desarrollada por Samuel Uribe y Jose Mejía para la gestión de suscripciones, con funcionalidades de seguimiento y análisis de gastos.
 
 ## Características
 - Seguimiento de suscripciones
@@ -18,4 +18,4 @@ Aplicación desarrollada por [Tu Nombre] para la gestión de suscripciones, con 
 - MPAndroidChart
 
 ## Contribución
-Desarrollado por [Tu Nombre] como parte de un proyecto personal.
+Desarrollado por Samuel Uribe y Jose Mejía como parte de un proyecto personal.

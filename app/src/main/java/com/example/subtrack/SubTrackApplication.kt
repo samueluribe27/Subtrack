@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
  */
 class SubTrackApplication : Application() {
     
-    // Instancia de la base de datos
+    // Instancia de base de datos
     val database by lazy { SubTrackDatabase.getDatabase(this) }
     
     // Repositorios
