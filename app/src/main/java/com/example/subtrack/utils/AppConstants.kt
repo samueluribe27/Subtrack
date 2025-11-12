@@ -5,6 +5,7 @@ package com.example.subtrack.utils
  * 
  * @author Samuel Uribe y Jose Mejía
  */
+ 
 object AppConstants {
     // Nombres de preferencias compartidas
     const val PREF_NAME = "subtrack_prefs"
